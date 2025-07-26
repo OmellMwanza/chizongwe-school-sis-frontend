@@ -41,7 +41,19 @@ export function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-school-blue-light/10 to-school-blue/5 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
+      <div className="w-full max-w-md">
+        <div className="mb-4">
+          <Link to="/results">
+            <Button
+              variant="ghost"
+              className="text-school-blue hover:text-school-blue-dark hover:bg-school-blue/10"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Results
+            </Button>
+          </Link>
+        </div>
+        <Card className="w-full">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto h-16 w-16 bg-school-blue rounded-full flex items-center justify-center">
             <GraduationCap className="h-8 w-8 text-white" />
@@ -103,7 +115,8 @@ export function Login() {
             </Button>
           </CardFooter>
         </form>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 }
