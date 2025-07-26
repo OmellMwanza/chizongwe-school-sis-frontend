@@ -233,14 +233,27 @@ export function Results() {
               </Alert>
             )}
 
-            <Button
-              type="submit"
-              className="w-full md:w-auto bg-school-blue hover:bg-school-blue-dark"
-              disabled={isLoading}
-            >
-              {isLoading ? "Searching..." : "Search Results"}
-              <Search className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                type="submit"
+                className="w-full sm:w-auto bg-school-blue hover:bg-school-blue-dark"
+                disabled={isLoading}
+              >
+                {isLoading ? "Searching..." : "Search Results"}
+                <Search className="ml-2 h-4 w-4" />
+              </Button>
+
+              <Link to="/admin/login">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full sm:w-auto border-school-blue text-school-blue hover:bg-school-blue hover:text-white"
+                >
+                  Admin Dashboard
+                  <Settings className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
 
             <div className="text-sm text-school-gray-dark mt-2">
               <strong>Demo:</strong> Use student number "CS2024001" to see
