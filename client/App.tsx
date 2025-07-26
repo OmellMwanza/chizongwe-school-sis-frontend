@@ -100,7 +100,8 @@ const App = () => (
   </QueryClientProvider>
 );
 
-const container = document.getElementById("root")!;
-if (!container._reactRootContainer) {
-  createRoot(container).render(<App />);
+// Only render if this is the main execution (not during hot reload)
+if (typeof window !== "undefined" && !window.__app_rendered) {
+  window.__app_rendered = true;
+  createRoot(document.getElementById("root")!).render(<App />);
 }
