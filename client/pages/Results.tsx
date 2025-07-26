@@ -3,8 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Search, FileText, Download, Mail } from "lucide-react";
 
@@ -34,9 +47,11 @@ export function Results() {
     year: "",
     term: "",
     grade: "",
-    studentNumber: ""
+    studentNumber: "",
   });
-  const [searchResults, setSearchResults] = useState<StudentResult | null>(null);
+  const [searchResults, setSearchResults] = useState<StudentResult | null>(
+    null,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -59,7 +74,7 @@ export function Results() {
     average: 83,
     overallGrade: "A",
     position: 3,
-    totalStudents: 45
+    totalStudents: 45,
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,7 +83,12 @@ export function Results() {
     setIsLoading(true);
 
     // Validate form
-    if (!formData.year || !formData.term || !formData.grade || !formData.studentNumber) {
+    if (
+      !formData.year ||
+      !formData.term ||
+      !formData.grade ||
+      !formData.studentNumber
+    ) {
       setError("Please fill in all fields");
       setIsLoading(false);
       return;
@@ -80,7 +100,9 @@ export function Results() {
       if (formData.studentNumber.toLowerCase() === "cs2024001") {
         setSearchResults(sampleResult);
       } else {
-        setError("Student record not found. Please check your student number and try again.");
+        setError(
+          "Student record not found. Please check your student number and try again.",
+        );
         setSearchResults(null);
       }
       setIsLoading(false);
@@ -93,13 +115,20 @@ export function Results() {
 
   const getGradeColor = (grade: string) => {
     switch (grade) {
-      case "A+": return "text-green-600 bg-green-50";
-      case "A": return "text-green-600 bg-green-50";
-      case "B+": return "text-blue-600 bg-blue-50";
-      case "B": return "text-blue-600 bg-blue-50";
-      case "C+": return "text-yellow-600 bg-yellow-50";
-      case "C": return "text-yellow-600 bg-yellow-50";
-      default: return "text-red-600 bg-red-50";
+      case "A+":
+        return "text-green-600 bg-green-50";
+      case "A":
+        return "text-green-600 bg-green-50";
+      case "B+":
+        return "text-blue-600 bg-blue-50";
+      case "B":
+        return "text-blue-600 bg-blue-50";
+      case "C+":
+        return "text-yellow-600 bg-yellow-50";
+      case "C":
+        return "text-yellow-600 bg-yellow-50";
+      default:
+        return "text-red-600 bg-red-50";
     }
   };
 
@@ -127,7 +156,12 @@ export function Results() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="year">Academic Year</Label>
-                <Select value={formData.year} onValueChange={(value) => setFormData({...formData, year: value})}>
+                <Select
+                  value={formData.year}
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, year: value })
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select year" />
                   </SelectTrigger>
@@ -141,7 +175,12 @@ export function Results() {
 
               <div className="space-y-2">
                 <Label htmlFor="term">Term</Label>
-                <Select value={formData.term} onValueChange={(value) => setFormData({...formData, term: value})}>
+                <Select
+                  value={formData.term}
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, term: value })
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select term" />
                   </SelectTrigger>
@@ -155,7 +194,12 @@ export function Results() {
 
               <div className="space-y-2">
                 <Label htmlFor="grade">Grade/Form</Label>
-                <Select value={formData.grade} onValueChange={(value) => setFormData({...formData, grade: value})}>
+                <Select
+                  value={formData.grade}
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, grade: value })
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select grade" />
                   </SelectTrigger>
@@ -175,7 +219,9 @@ export function Results() {
                   id="studentNumber"
                   placeholder="e.g., CS2024001"
                   value={formData.studentNumber}
-                  onChange={(e) => setFormData({...formData, studentNumber: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, studentNumber: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -186,17 +232,18 @@ export function Results() {
               </Alert>
             )}
 
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full md:w-auto bg-school-blue hover:bg-school-blue-dark"
               disabled={isLoading}
             >
               {isLoading ? "Searching..." : "Search Results"}
               <Search className="ml-2 h-4 w-4" />
             </Button>
-            
+
             <div className="text-sm text-school-gray-dark mt-2">
-              <strong>Demo:</strong> Use student number "CS2024001" to see sample results
+              <strong>Demo:</strong> Use student number "CS2024001" to see
+              sample results
             </div>
           </form>
         </CardContent>
@@ -232,7 +279,9 @@ export function Results() {
                   <p className="font-semibold">{searchResults.studentName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-school-gray-dark">Student Number</p>
+                  <p className="text-sm text-school-gray-dark">
+                    Student Number
+                  </p>
                   <p className="font-semibold">{searchResults.studentNumber}</p>
                 </div>
                 <div>
@@ -240,8 +289,12 @@ export function Results() {
                   <p className="font-semibold">{searchResults.class}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-school-gray-dark">Academic Period</p>
-                  <p className="font-semibold">{searchResults.year} - {searchResults.term}</p>
+                  <p className="text-sm text-school-gray-dark">
+                    Academic Period
+                  </p>
+                  <p className="font-semibold">
+                    {searchResults.year} - {searchResults.term}
+                  </p>
                 </div>
               </div>
 
@@ -259,14 +312,22 @@ export function Results() {
                   <TableBody>
                     {searchResults.results.map((result, index) => (
                       <TableRow key={index}>
-                        <TableCell className="font-medium">{result.subject}</TableCell>
-                        <TableCell className="text-center">{result.marks}/100</TableCell>
+                        <TableCell className="font-medium">
+                          {result.subject}
+                        </TableCell>
                         <TableCell className="text-center">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(result.grade)}`}>
+                          {result.marks}/100
+                        </TableCell>
+                        <TableCell className="text-center">
+                          <span
+                            className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(result.grade)}`}
+                          >
                             {result.grade}
                           </span>
                         </TableCell>
-                        <TableCell className="text-center">{result.position}</TableCell>
+                        <TableCell className="text-center">
+                          {result.position}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -277,20 +338,28 @@ export function Results() {
               <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-school-gray rounded-lg">
                 <div className="text-center">
                   <p className="text-sm text-school-gray-dark">Total Marks</p>
-                  <p className="text-2xl font-bold text-school-blue">{searchResults.totalMarks}/600</p>
+                  <p className="text-2xl font-bold text-school-blue">
+                    {searchResults.totalMarks}/600
+                  </p>
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-school-gray-dark">Average</p>
-                  <p className="text-2xl font-bold text-school-blue">{searchResults.average}%</p>
+                  <p className="text-2xl font-bold text-school-blue">
+                    {searchResults.average}%
+                  </p>
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-school-gray-dark">Overall Grade</p>
-                  <p className={`text-2xl font-bold px-3 py-1 rounded-full ${getGradeColor(searchResults.overallGrade)}`}>
+                  <p
+                    className={`text-2xl font-bold px-3 py-1 rounded-full ${getGradeColor(searchResults.overallGrade)}`}
+                  >
                     {searchResults.overallGrade}
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="text-sm text-school-gray-dark">Class Position</p>
+                  <p className="text-sm text-school-gray-dark">
+                    Class Position
+                  </p>
                   <p className="text-2xl font-bold text-school-blue">
                     {searchResults.position}/{searchResults.totalStudents}
                   </p>

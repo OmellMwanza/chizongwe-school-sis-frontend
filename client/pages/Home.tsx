@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  GraduationCap, 
-  Award, 
-  Users, 
-  BookOpen, 
+import {
+  GraduationCap,
+  Award,
+  Users,
+  BookOpen,
   Trophy,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 
 export function Home() {
@@ -21,21 +21,19 @@ export function Home() {
             <div className="text-center lg:text-left">
               <h1 className="text-4xl lg:text-6xl font-bold mb-6">
                 Welcome to{" "}
-                <span className="block text-yellow-300">
-                  Chizongwe School
-                </span>
+                <span className="block text-yellow-300">Chizongwe School</span>
               </h1>
               <p className="text-xl lg:text-2xl mb-8 text-blue-100">
                 Excellence in Education - Shaping Tomorrow's Leaders
               </p>
               <p className="text-lg mb-8 text-blue-200 max-w-2xl">
-                Access your academic results quickly and securely. Our digital 
-                results system provides instant access to grades, progress reports, 
-                and academic achievements.
+                Access your academic results quickly and securely. Our digital
+                results system provides instant access to grades, progress
+                reports, and academic achievements.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  asChild 
+                <Button
+                  asChild
                   size="lg"
                   className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold text-lg px-8 py-4 h-auto"
                 >
@@ -44,15 +42,13 @@ export function Home() {
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button 
-                  asChild 
+                <Button
+                  asChild
                   variant="outline"
                   size="lg"
                   className="border-2 border-white text-white hover:bg-white hover:text-school-blue font-semibold text-lg px-8 py-4 h-auto"
                 >
-                  <Link to="/about">
-                    Learn More
-                  </Link>
+                  <Link to="/about">Learn More</Link>
                 </Button>
               </div>
             </div>
@@ -61,7 +57,9 @@ export function Home() {
                 <div className="aspect-video bg-gradient-to-br from-white/20 to-white/5 rounded-xl flex items-center justify-center">
                   <div className="text-center">
                     <GraduationCap className="h-20 w-20 text-yellow-300 mx-auto mb-4" />
-                    <p className="text-white/80 text-lg">School Building Image</p>
+                    <p className="text-white/80 text-lg">
+                      School Building Image
+                    </p>
                     <p className="text-white/60 text-sm">Coming Soon</p>
                   </div>
                 </div>
@@ -115,11 +113,11 @@ export function Home() {
               Why Choose Chizongwe School?
             </h2>
             <p className="text-xl text-school-gray-dark max-w-3xl mx-auto">
-              We provide quality education with modern facilities and dedicated teachers 
-              committed to nurturing every student's potential.
+              We provide quality education with modern facilities and dedicated
+              teachers committed to nurturing every student's potential.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors">
               <CardContent className="p-8 text-center">
@@ -130,8 +128,8 @@ export function Home() {
                   Quality Education
                 </h3>
                 <p className="text-school-gray-dark">
-                  Comprehensive curriculum designed to meet international standards 
-                  and prepare students for higher education.
+                  Comprehensive curriculum designed to meet international
+                  standards and prepare students for higher education.
                 </p>
               </CardContent>
             </Card>
@@ -145,7 +143,7 @@ export function Home() {
                   Experienced Teachers
                 </h3>
                 <p className="text-school-gray-dark">
-                  Dedicated and qualified educators committed to providing 
+                  Dedicated and qualified educators committed to providing
                   personalized attention to every student.
                 </p>
               </CardContent>
@@ -160,7 +158,7 @@ export function Home() {
                   Excellence Record
                 </h3>
                 <p className="text-school-gray-dark">
-                  Proven track record of academic excellence with outstanding 
+                  Proven track record of academic excellence with outstanding
                   results in national examinations.
                 </p>
               </CardContent>
@@ -176,10 +174,11 @@ export function Home() {
             Ready to Check Your Results?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Access your academic progress instantly through our secure results portal.
+            Access your academic progress instantly through our secure results
+            portal.
           </p>
-          <Button 
-            asChild 
+          <Button
+            asChild
             size="lg"
             className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold text-lg px-8 py-4 h-auto"
           >

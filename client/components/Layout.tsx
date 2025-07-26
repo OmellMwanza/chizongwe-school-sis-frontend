@@ -47,7 +47,7 @@ export function Layout({ children }: LayoutProps) {
                     "px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     location.pathname === item.href
                       ? "bg-school-blue-dark text-white"
-                      : "text-white hover:bg-school-blue-light"
+                      : "text-white hover:bg-school-blue-light",
                   )}
                 >
                   {item.name}
@@ -84,7 +84,7 @@ export function Layout({ children }: LayoutProps) {
                     "block px-3 py-2 rounded-md text-base font-medium transition-colors",
                     location.pathname === item.href
                       ? "bg-school-blue text-white"
-                      : "text-white hover:bg-school-blue"
+                      : "text-white hover:bg-school-blue",
                   )}
                 >
                   {item.name}
@@ -96,9 +96,7 @@ export function Layout({ children }: LayoutProps) {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
@@ -110,7 +108,8 @@ export function Layout({ children }: LayoutProps) {
                 <span className="font-bold text-lg">Chizongwe School</span>
               </div>
               <p className="text-gray-300">
-                Excellence in Education - Preparing students for a bright future.
+                Excellence in Education - Preparing students for a bright
+                future.
               </p>
             </div>
             <div>
