@@ -13,11 +13,15 @@ import {
   LogOut,
   Menu,
   GraduationCap,
-  User
+  User,
 } from "lucide-react";
 
 const navigation = [
-  { name: "Dashboard Overview", href: "/admin/dashboard", icon: LayoutDashboard },
+  {
+    name: "Dashboard Overview",
+    href: "/admin/dashboard",
+    icon: LayoutDashboard,
+  },
   { name: "Manage Students", href: "/admin/students", icon: Users },
   { name: "Manage Results", href: "/admin/results", icon: FileText },
   { name: "Manage Terms & Years", href: "/admin/terms", icon: Calendar },
@@ -61,7 +65,9 @@ export function AdminLayout() {
             <GraduationCap className="h-5 w-5 text-white" />
           </div>
           <div className="hidden lg:block">
-            <h2 className="text-lg font-semibold text-school-blue">Chizongwe</h2>
+            <h2 className="text-lg font-semibold text-school-blue">
+              Chizongwe
+            </h2>
             <p className="text-xs text-gray-500">Results System</p>
           </div>
         </div>
@@ -80,7 +86,7 @@ export function AdminLayout() {
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 isActive
                   ? "bg-school-blue text-white"
-                  : "text-gray-700 hover:bg-school-gray hover:text-school-blue"
+                  : "text-gray-700 hover:bg-school-gray hover:text-school-blue",
               )}
               onClick={() => setIsMobileMenuOpen(false)}
             >

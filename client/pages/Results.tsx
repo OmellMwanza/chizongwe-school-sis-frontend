@@ -243,7 +243,14 @@ export function Results() {
             </Button>
 
             <div className="text-sm text-school-gray-dark mt-3">
-              If you are an admin, <Link to="/admin/login" className="text-school-blue hover:text-school-blue-dark underline">log in here</Link>.
+              If you are an admin,{" "}
+              <Link
+                to="/admin/login"
+                className="text-school-blue hover:text-school-blue-dark underline"
+              >
+                log in here
+              </Link>
+              .
             </div>
 
             <div className="text-sm text-school-gray-dark mt-2">

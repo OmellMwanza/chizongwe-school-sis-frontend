@@ -32,12 +32,54 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           {/* Public routes with main layout */}
-          <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="/about" element={<Layout><About /></Layout>} />
-          <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
-          <Route path="/results" element={<Layout><Results /></Layout>} />
-          <Route path="/contact" element={<Layout><Contact /></Layout>} />
-          <Route path="/admin" element={<Layout><Admin /></Layout>} />
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <About />
+              </Layout>
+            }
+          />
+          <Route
+            path="/gallery"
+            element={
+              <Layout>
+                <Gallery />
+              </Layout>
+            }
+          />
+          <Route
+            path="/results"
+            element={
+              <Layout>
+                <Results />
+              </Layout>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Layout>
+                <Contact />
+              </Layout>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <Layout>
+                <Admin />
+              </Layout>
+            }
+          />
 
           {/* Admin login route (no layout) */}
           <Route path="/admin/login" element={<Login />} />

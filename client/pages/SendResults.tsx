@@ -3,13 +3,34 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/use-toast";
-import { Send, Search, Eye, Mail, Users, FileText, CheckCircle } from "lucide-react";
+import {
+  Send,
+  Search,
+  Eye,
+  Mail,
+  Users,
+  FileText,
+  CheckCircle,
+} from "lucide-react";
 
 interface Student {
   id: string;
@@ -43,7 +64,9 @@ export function SendResults() {
   const [selectedGrade, setSelectedGrade] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStudents, setSelectedStudents] = useState<string[]>([]);
-  const [previewStudent, setPreviewStudent] = useState<StudentResult | null>(null);
+  const [previewStudent, setPreviewStudent] = useState<StudentResult | null>(
+    null,
+  );
   const [emailSubject, setEmailSubject] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
   const [sendingEmails, setSendingEmails] = useState(false);
@@ -57,7 +80,7 @@ export function SendResults() {
       class: "10A",
       email: "john.banda@student.chizongwe.edu.zm",
       guardianEmail: "parent.banda@gmail.com",
-      guardianContact: "+260 977 123456"
+      guardianContact: "+260 977 123456",
     },
     {
       id: "2",
@@ -67,7 +90,7 @@ export function SendResults() {
       class: "11B",
       email: "mary.mwanza@student.chizongwe.edu.zm",
       guardianEmail: "guardian.mwanza@gmail.com",
-      guardianContact: "+260 966 789012"
+      guardianContact: "+260 966 789012",
     },
     {
       id: "3",
@@ -77,8 +100,8 @@ export function SendResults() {
       class: "9A",
       email: "peter.hamoonga@student.chizongwe.edu.zm",
       guardianEmail: "guardian.hamoonga@gmail.com",
-      guardianContact: "+260 955 456789"
-    }
+      guardianContact: "+260 955 456789",
+    },
   ];
 
   // Mock results data
@@ -88,32 +111,36 @@ export function SendResults() {
       { name: "English", marks: 78, grade: "B" },
       { name: "Biology", marks: 82, grade: "B" },
       { name: "Chemistry", marks: 90, grade: "A" },
-      { name: "Physics", marks: 76, grade: "B" }
+      { name: "Physics", marks: 76, grade: "B" },
     ],
     "2": [
       { name: "Mathematics", marks: 92, grade: "A" },
       { name: "English", marks: 88, grade: "A" },
       { name: "Biology", marks: 85, grade: "A" },
       { name: "Chemistry", marks: 89, grade: "A" },
-      { name: "Physics", marks: 83, grade: "B" }
+      { name: "Physics", marks: 83, grade: "B" },
     ],
     "3": [
       { name: "Mathematics", marks: 68, grade: "C" },
       { name: "English", marks: 72, grade: "C" },
       { name: "Science", marks: 75, grade: "B" },
       { name: "Social Studies", marks: 79, grade: "B" },
-      { name: "Zambian Languages", marks: 81, grade: "B" }
-    ]
+      { name: "Zambian Languages", marks: 81, grade: "B" },
+    ],
   };
 
   const years = ["2024", "2023", "2022"];
   const terms = ["Term 1", "Term 2", "Term 3"];
   const grades = ["Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12"];
 
-  const filteredStudents = students.filter(student => {
-    const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         student.studentNumber.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesGrade = !selectedGrade || selectedGrade === "all" || student.grade === selectedGrade;
+  const filteredStudents = students.filter((student) => {
+    const matchesSearch =
+      student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.studentNumber.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesGrade =
+      !selectedGrade ||
+      selectedGrade === "all" ||
+      student.grade === selectedGrade;
     return matchesSearch && matchesGrade;
   });
 
@@ -136,13 +163,13 @@ export function SendResults() {
     if (checked) {
       setSelectedStudents([...selectedStudents, studentId]);
     } else {
-      setSelectedStudents(selectedStudents.filter(id => id !== studentId));
+      setSelectedStudents(selectedStudents.filter((id) => id !== studentId));
     }
   };
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
-      setSelectedStudents(filteredStudents.map(student => student.id));
+      setSelectedStudents(filteredStudents.map((student) => student.id));
     } else {
       setSelectedStudents([]);
     }
@@ -153,7 +180,7 @@ export function SendResults() {
       toast({
         title: "Selection Required",
         description: "Please select year and term first",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -168,14 +195,16 @@ export function SendResults() {
       term: selectedTerm,
       year: selectedYear,
       average,
-      overallGrade
+      overallGrade,
     };
 
     setPreviewStudent(studentResult);
-    
+
     // Set default email content
     if (!emailSubject) {
-      setEmailSubject(`${selectedTerm} ${selectedYear} Results - ${student.name}`);
+      setEmailSubject(
+        `${selectedTerm} ${selectedYear} Results - ${student.name}`,
+      );
     }
     if (!emailMessage) {
       setEmailMessage(`Dear Parent/Guardian,
@@ -192,7 +221,7 @@ Chizongwe Students Results System`);
       toast({
         title: "Selection Required",
         description: "Please select year and term",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -201,7 +230,7 @@ Chizongwe Students Results System`);
       toast({
         title: "No Students Selected",
         description: "Please select at least one student",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -210,29 +239,29 @@ Chizongwe Students Results System`);
       toast({
         title: "Email Content Required",
         description: "Please provide email subject and message",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
     setSendingEmails(true);
-    
+
     // Simulate sending emails
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       toast({
         title: "Results Sent Successfully",
         description: `Results sent to ${selectedStudents.length} student(s)`,
       });
-      
+
       setSelectedStudents([]);
       setPreviewStudent(null);
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to send results. Please try again.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setSendingEmails(false);
@@ -246,7 +275,9 @@ Chizongwe Students Results System`);
         <Send className="h-8 w-8 text-school-blue" />
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Send Results</h1>
-          <p className="text-gray-600">Send student results via email to parents and guardians</p>
+          <p className="text-gray-600">
+            Send student results via email to parents and guardians
+          </p>
         </div>
       </div>
 
@@ -265,7 +296,9 @@ Chizongwe Students Results System`);
                 </SelectTrigger>
                 <SelectContent>
                   {years.map((year) => (
-                    <SelectItem key={year} value={year}>{year}</SelectItem>
+                    <SelectItem key={year} value={year}>
+                      {year}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -278,7 +311,9 @@ Chizongwe Students Results System`);
                 </SelectTrigger>
                 <SelectContent>
                   {terms.map((term) => (
-                    <SelectItem key={term} value={term}>{term}</SelectItem>
+                    <SelectItem key={term} value={term}>
+                      {term}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -292,7 +327,9 @@ Chizongwe Students Results System`);
                 <SelectContent>
                   <SelectItem value="all">All grades</SelectItem>
                   {grades.map((grade) => (
-                    <SelectItem key={grade} value={grade}>{grade}</SelectItem>
+                    <SelectItem key={grade} value={grade}>
+                      {grade}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -328,7 +365,10 @@ Chizongwe Students Results System`);
               </CardTitle>
               <div className="flex items-center gap-2">
                 <Checkbox
-                  checked={selectedStudents.length === filteredStudents.length && filteredStudents.length > 0}
+                  checked={
+                    selectedStudents.length === filteredStudents.length &&
+                    filteredStudents.length > 0
+                  }
                   onCheckedChange={handleSelectAll}
                 />
                 <span className="text-sm">Select All</span>
@@ -337,16 +377,26 @@ Chizongwe Students Results System`);
             <CardContent>
               <div className="space-y-2 max-h-96 overflow-y-auto">
                 {filteredStudents.map((student) => (
-                  <div key={student.id} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
+                  <div
+                    key={student.id}
+                    className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50"
+                  >
                     <div className="flex items-center gap-3">
                       <Checkbox
                         checked={selectedStudents.includes(student.id)}
-                        onCheckedChange={(checked) => handleStudentSelect(student.id, checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          handleStudentSelect(student.id, checked as boolean)
+                        }
                       />
                       <div>
                         <p className="font-medium">{student.name}</p>
-                        <p className="text-sm text-gray-500">{student.studentNumber} - {student.grade} {student.class}</p>
-                        <p className="text-xs text-gray-400">{student.guardianEmail}</p>
+                        <p className="text-sm text-gray-500">
+                          {student.studentNumber} - {student.grade}{" "}
+                          {student.class}
+                        </p>
+                        <p className="text-xs text-gray-400">
+                          {student.guardianEmail}
+                        </p>
                       </div>
                     </div>
                     <Button
@@ -361,7 +411,7 @@ Chizongwe Students Results System`);
                   </div>
                 ))}
               </div>
-              
+
               {selectedStudents.length > 0 && (
                 <div className="mt-4 p-3 bg-school-blue-light/10 rounded-lg">
                   <p className="text-sm font-medium text-school-blue">
@@ -387,9 +437,15 @@ Chizongwe Students Results System`);
               <CardContent>
                 <div className="space-y-4">
                   <div className="bg-school-blue-light/10 p-4 rounded-lg">
-                    <h3 className="font-semibold text-school-blue">{previewStudent.student.name}</h3>
-                    <p className="text-sm text-gray-600">{previewStudent.student.studentNumber}</p>
-                    <p className="text-sm text-gray-600">{previewStudent.term} {previewStudent.year}</p>
+                    <h3 className="font-semibold text-school-blue">
+                      {previewStudent.student.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {previewStudent.student.studentNumber}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {previewStudent.term} {previewStudent.year}
+                    </p>
                   </div>
 
                   <div className="overflow-x-auto">
@@ -407,7 +463,15 @@ Chizongwe Students Results System`);
                             <TableCell>{subject.name}</TableCell>
                             <TableCell>{subject.marks}</TableCell>
                             <TableCell>
-                              <Badge variant={subject.grade === 'A' ? 'default' : subject.grade === 'B' ? 'secondary' : 'outline'}>
+                              <Badge
+                                variant={
+                                  subject.grade === "A"
+                                    ? "default"
+                                    : subject.grade === "B"
+                                      ? "secondary"
+                                      : "outline"
+                                }
+                              >
                                 {subject.grade}
                               </Badge>
                             </TableCell>
@@ -420,11 +484,19 @@ Chizongwe Students Results System`);
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">Overall Average:</span>
-                      <span className="text-lg font-bold">{previewStudent.average}%</span>
+                      <span className="text-lg font-bold">
+                        {previewStudent.average}%
+                      </span>
                     </div>
                     <div className="flex justify-between items-center mt-2">
                       <span className="font-medium">Overall Grade:</span>
-                      <Badge variant={previewStudent.overallGrade === 'A' ? 'default' : 'secondary'}>
+                      <Badge
+                        variant={
+                          previewStudent.overallGrade === "A"
+                            ? "default"
+                            : "secondary"
+                        }
+                      >
                         {previewStudent.overallGrade}
                       </Badge>
                     </div>

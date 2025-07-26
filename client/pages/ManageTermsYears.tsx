@@ -2,11 +2,32 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
-import { Calendar, Plus, Edit, Trash2, Save, CheckCircle, XCircle } from "lucide-react";
+import {
+  Calendar,
+  Plus,
+  Edit,
+  Trash2,
+  Save,
+  CheckCircle,
+  XCircle,
+} from "lucide-react";
 
 interface AcademicYear {
   id: string;
@@ -33,15 +54,15 @@ export function ManageTermsYears() {
       year: "2024",
       startDate: "2024-01-15",
       endDate: "2024-12-15",
-      isActive: true
+      isActive: true,
     },
     {
       id: "2",
       year: "2023",
       startDate: "2023-01-15",
       endDate: "2023-12-15",
-      isActive: false
-    }
+      isActive: false,
+    },
   ]);
 
   const [terms, setTerms] = useState<Term[]>([
@@ -52,7 +73,7 @@ export function ManageTermsYears() {
       name: "Term 1",
       startDate: "2024-01-15",
       endDate: "2024-04-15",
-      isActive: true
+      isActive: true,
     },
     {
       id: "2",
@@ -61,7 +82,7 @@ export function ManageTermsYears() {
       name: "Term 2",
       startDate: "2024-05-01",
       endDate: "2024-08-15",
-      isActive: false
+      isActive: false,
     },
     {
       id: "3",
@@ -70,21 +91,21 @@ export function ManageTermsYears() {
       name: "Term 3",
       startDate: "2024-09-01",
       endDate: "2024-12-15",
-      isActive: false
-    }
+      isActive: false,
+    },
   ]);
 
   const [yearForm, setYearForm] = useState({
     year: "",
     startDate: "",
-    endDate: ""
+    endDate: "",
   });
 
   const [termForm, setTermForm] = useState({
     yearId: "",
     name: "",
     startDate: "",
-    endDate: ""
+    endDate: "",
   });
 
   const [editingYear, setEditingYear] = useState<string | null>(null);
@@ -105,7 +126,7 @@ export function ManageTermsYears() {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -115,14 +136,14 @@ export function ManageTermsYears() {
       year: yearForm.year,
       startDate: yearForm.startDate,
       endDate: yearForm.endDate,
-      isActive: false
+      isActive: false,
     };
 
     setAcademicYears([...academicYears, newYear]);
     resetYearForm();
     toast({
       title: "Success",
-      description: "Academic year added successfully"
+      description: "Academic year added successfully",
     });
   };
 
@@ -130,7 +151,7 @@ export function ManageTermsYears() {
     setYearForm({
       year: year.year,
       startDate: year.startDate,
-      endDate: year.endDate
+      endDate: year.endDate,
     });
     setEditingYear(year.id);
   };
@@ -140,56 +161,69 @@ export function ManageTermsYears() {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
-    setAcademicYears(academicYears.map(year => 
-      year.id === editingYear 
-        ? { ...year, ...yearForm }
-        : year
-    ));
+    setAcademicYears(
+      academicYears.map((year) =>
+        year.id === editingYear ? { ...year, ...yearForm } : year,
+      ),
+    );
     resetYearForm();
     toast({
       title: "Success",
-      description: "Academic year updated successfully"
+      description: "Academic year updated successfully",
     });
   };
 
   const handleDeleteYear = (id: string) => {
-    if (confirm("Are you sure you want to delete this academic year? This will also delete all associated terms.")) {
-      setAcademicYears(academicYears.filter(year => year.id !== id));
-      setTerms(terms.filter(term => term.yearId !== id));
+    if (
+      confirm(
+        "Are you sure you want to delete this academic year? This will also delete all associated terms.",
+      )
+    ) {
+      setAcademicYears(academicYears.filter((year) => year.id !== id));
+      setTerms(terms.filter((term) => term.yearId !== id));
       toast({
         title: "Success",
-        description: "Academic year deleted successfully"
+        description: "Academic year deleted successfully",
       });
     }
   };
 
   const handleSetActiveYear = (id: string) => {
-    setAcademicYears(academicYears.map(year => ({
-      ...year,
-      isActive: year.id === id
-    })));
+    setAcademicYears(
+      academicYears.map((year) => ({
+        ...year,
+        isActive: year.id === id,
+      })),
+    );
     toast({
       title: "Success",
-      description: "Active year updated successfully"
+      description: "Active year updated successfully",
     });
   };
 
   const handleAddTerm = () => {
-    if (!termForm.yearId || !termForm.name || !termForm.startDate || !termForm.endDate) {
+    if (
+      !termForm.yearId ||
+      !termForm.name ||
+      !termForm.startDate ||
+      !termForm.endDate
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
-    const selectedYear = academicYears.find(year => year.id === termForm.yearId);
+    const selectedYear = academicYears.find(
+      (year) => year.id === termForm.yearId,
+    );
     const newTerm: Term = {
       id: Date.now().toString(),
       yearId: termForm.yearId,
@@ -197,14 +231,14 @@ export function ManageTermsYears() {
       name: termForm.name,
       startDate: termForm.startDate,
       endDate: termForm.endDate,
-      isActive: false
+      isActive: false,
     };
 
     setTerms([...terms, newTerm]);
     resetTermForm();
     toast({
       title: "Success",
-      description: "Term added successfully"
+      description: "Term added successfully",
     });
   };
 
@@ -213,52 +247,63 @@ export function ManageTermsYears() {
       yearId: term.yearId,
       name: term.name,
       startDate: term.startDate,
-      endDate: term.endDate
+      endDate: term.endDate,
     });
     setEditingTerm(term.id);
   };
 
   const handleUpdateTerm = () => {
-    if (!termForm.yearId || !termForm.name || !termForm.startDate || !termForm.endDate) {
+    if (
+      !termForm.yearId ||
+      !termForm.name ||
+      !termForm.startDate ||
+      !termForm.endDate
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
-    const selectedYear = academicYears.find(year => year.id === termForm.yearId);
-    setTerms(terms.map(term => 
-      term.id === editingTerm 
-        ? { ...term, ...termForm, year: selectedYear?.year || term.year }
-        : term
-    ));
+    const selectedYear = academicYears.find(
+      (year) => year.id === termForm.yearId,
+    );
+    setTerms(
+      terms.map((term) =>
+        term.id === editingTerm
+          ? { ...term, ...termForm, year: selectedYear?.year || term.year }
+          : term,
+      ),
+    );
     resetTermForm();
     toast({
       title: "Success",
-      description: "Term updated successfully"
+      description: "Term updated successfully",
     });
   };
 
   const handleDeleteTerm = (id: string) => {
     if (confirm("Are you sure you want to delete this term?")) {
-      setTerms(terms.filter(term => term.id !== id));
+      setTerms(terms.filter((term) => term.id !== id));
       toast({
         title: "Success",
-        description: "Term deleted successfully"
+        description: "Term deleted successfully",
       });
     }
   };
 
   const handleSetActiveTerm = (id: string) => {
-    setTerms(terms.map(term => ({
-      ...term,
-      isActive: term.id === id
-    })));
+    setTerms(
+      terms.map((term) => ({
+        ...term,
+        isActive: term.id === id,
+      })),
+    );
     toast({
       title: "Success",
-      description: "Active term updated successfully"
+      description: "Active term updated successfully",
     });
   };
 
@@ -268,8 +313,12 @@ export function ManageTermsYears() {
       <div className="flex items-center gap-3">
         <Calendar className="h-8 w-8 text-school-blue" />
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Manage Terms & Years</h1>
-          <p className="text-gray-600">Create and manage academic years and terms</p>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Manage Terms & Years
+          </h1>
+          <p className="text-gray-600">
+            Create and manage academic years and terms
+          </p>
         </div>
       </div>
 
@@ -289,7 +338,9 @@ export function ManageTermsYears() {
                 <Input
                   id="year"
                   value={yearForm.year}
-                  onChange={(e) => setYearForm({...yearForm, year: e.target.value})}
+                  onChange={(e) =>
+                    setYearForm({ ...yearForm, year: e.target.value })
+                  }
                   placeholder="2024"
                 />
               </div>
@@ -299,7 +350,9 @@ export function ManageTermsYears() {
                   id="yearStartDate"
                   type="date"
                   value={yearForm.startDate}
-                  onChange={(e) => setYearForm({...yearForm, startDate: e.target.value})}
+                  onChange={(e) =>
+                    setYearForm({ ...yearForm, startDate: e.target.value })
+                  }
                 />
               </div>
               <div className="space-y-2">
@@ -308,11 +361,13 @@ export function ManageTermsYears() {
                   id="yearEndDate"
                   type="date"
                   value={yearForm.endDate}
-                  onChange={(e) => setYearForm({...yearForm, endDate: e.target.value})}
+                  onChange={(e) =>
+                    setYearForm({ ...yearForm, endDate: e.target.value })
+                  }
                 />
               </div>
               <div className="flex gap-2">
-                <Button 
+                <Button
                   onClick={editingYear ? handleUpdateYear : handleAddYear}
                   className="bg-school-blue hover:bg-school-blue-dark"
                 >
@@ -347,7 +402,9 @@ export function ManageTermsYears() {
                   <TableBody>
                     {academicYears.map((year) => (
                       <TableRow key={year.id}>
-                        <TableCell className="font-medium">{year.year}</TableCell>
+                        <TableCell className="font-medium">
+                          {year.year}
+                        </TableCell>
                         <TableCell className="text-sm">
                           {year.startDate} to {year.endDate}
                         </TableCell>
@@ -358,7 +415,13 @@ export function ManageTermsYears() {
                             ) : (
                               <XCircle className="h-4 w-4 text-gray-400" />
                             )}
-                            <span className={year.isActive ? "text-green-600" : "text-gray-500"}>
+                            <span
+                              className={
+                                year.isActive
+                                  ? "text-green-600"
+                                  : "text-gray-500"
+                              }
+                            >
                               {year.isActive ? "Active" : "Inactive"}
                             </span>
                           </div>
@@ -406,27 +469,37 @@ export function ManageTermsYears() {
           {/* Add/Edit Term Form */}
           <Card>
             <CardHeader>
-              <CardTitle>
-                {editingTerm ? "Edit Term" : "Add Term"}
-              </CardTitle>
+              <CardTitle>{editingTerm ? "Edit Term" : "Add Term"}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="termYear">Academic Year</Label>
-                <Select value={termForm.yearId} onValueChange={(value) => setTermForm({...termForm, yearId: value})}>
+                <Select
+                  value={termForm.yearId}
+                  onValueChange={(value) =>
+                    setTermForm({ ...termForm, yearId: value })
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select year" />
                   </SelectTrigger>
                   <SelectContent>
                     {academicYears.map((year) => (
-                      <SelectItem key={year.id} value={year.id}>{year.year}</SelectItem>
+                      <SelectItem key={year.id} value={year.id}>
+                        {year.year}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="termName">Term Name</Label>
-                <Select value={termForm.name} onValueChange={(value) => setTermForm({...termForm, name: value})}>
+                <Select
+                  value={termForm.name}
+                  onValueChange={(value) =>
+                    setTermForm({ ...termForm, name: value })
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select term" />
                   </SelectTrigger>
@@ -443,7 +516,9 @@ export function ManageTermsYears() {
                   id="termStartDate"
                   type="date"
                   value={termForm.startDate}
-                  onChange={(e) => setTermForm({...termForm, startDate: e.target.value})}
+                  onChange={(e) =>
+                    setTermForm({ ...termForm, startDate: e.target.value })
+                  }
                 />
               </div>
               <div className="space-y-2">
@@ -452,11 +527,13 @@ export function ManageTermsYears() {
                   id="termEndDate"
                   type="date"
                   value={termForm.endDate}
-                  onChange={(e) => setTermForm({...termForm, endDate: e.target.value})}
+                  onChange={(e) =>
+                    setTermForm({ ...termForm, endDate: e.target.value })
+                  }
                 />
               </div>
               <div className="flex gap-2">
-                <Button 
+                <Button
                   onClick={editingTerm ? handleUpdateTerm : handleAddTerm}
                   className="bg-school-blue hover:bg-school-blue-dark"
                 >
@@ -493,7 +570,9 @@ export function ManageTermsYears() {
                     {terms.map((term) => (
                       <TableRow key={term.id}>
                         <TableCell>{term.year}</TableCell>
-                        <TableCell className="font-medium">{term.name}</TableCell>
+                        <TableCell className="font-medium">
+                          {term.name}
+                        </TableCell>
                         <TableCell className="text-sm">
                           {term.startDate} to {term.endDate}
                         </TableCell>
@@ -504,7 +583,13 @@ export function ManageTermsYears() {
                             ) : (
                               <XCircle className="h-4 w-4 text-gray-400" />
                             )}
-                            <span className={term.isActive ? "text-green-600" : "text-gray-500"}>
+                            <span
+                              className={
+                                term.isActive
+                                  ? "text-green-600"
+                                  : "text-gray-500"
+                              }
+                            >
                               {term.isActive ? "Active" : "Inactive"}
                             </span>
                           </div>

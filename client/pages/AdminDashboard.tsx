@@ -1,6 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, FileText, GraduationCap, Send, TrendingUp, Calendar } from "lucide-react";
+import {
+  Users,
+  FileText,
+  GraduationCap,
+  Send,
+  TrendingUp,
+  Calendar,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function AdminDashboard() {
@@ -40,18 +47,54 @@ export function AdminDashboard() {
   ];
 
   const recentActivities = [
-    { action: "New student enrolled", details: "John Banda - Grade 10A", time: "2 hours ago" },
-    { action: "Results updated", details: "Mathematics - Grade 9B", time: "4 hours ago" },
-    { action: "Results sent", details: "Chemistry results - Grade 11", time: "6 hours ago" },
+    {
+      action: "New student enrolled",
+      details: "John Banda - Grade 10A",
+      time: "2 hours ago",
+    },
+    {
+      action: "Results updated",
+      details: "Mathematics - Grade 9B",
+      time: "4 hours ago",
+    },
+    {
+      action: "Results sent",
+      details: "Chemistry results - Grade 11",
+      time: "6 hours ago",
+    },
     { action: "New term created", details: "Term 1, 2024", time: "1 day ago" },
-    { action: "Student updated", details: "Mary Mwanza - Contact info", time: "2 days ago" },
+    {
+      action: "Student updated",
+      details: "Mary Mwanza - Contact info",
+      time: "2 days ago",
+    },
   ];
 
   const quickActions = [
-    { title: "Add New Student", href: "/admin/students", icon: Users, color: "bg-blue-600" },
-    { title: "Enter Results", href: "/admin/results", icon: FileText, color: "bg-green-600" },
-    { title: "Send Results", href: "/admin/send-results", icon: Send, color: "bg-purple-600" },
-    { title: "Manage Terms", href: "/admin/terms", icon: Calendar, color: "bg-orange-600" },
+    {
+      title: "Add New Student",
+      href: "/admin/students",
+      icon: Users,
+      color: "bg-blue-600",
+    },
+    {
+      title: "Enter Results",
+      href: "/admin/results",
+      icon: FileText,
+      color: "bg-green-600",
+    },
+    {
+      title: "Send Results",
+      href: "/admin/send-results",
+      icon: Send,
+      color: "bg-purple-600",
+    },
+    {
+      title: "Manage Terms",
+      href: "/admin/terms",
+      icon: Calendar,
+      color: "bg-orange-600",
+    },
   ];
 
   return (
@@ -59,8 +102,12 @@ export function AdminDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard Overview</h1>
-          <p className="text-gray-600 mt-1">Welcome to Chizongwe Students Results System</p>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Dashboard Overview
+          </h1>
+          <p className="text-gray-600 mt-1">
+            Welcome to Chizongwe Students Results System
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <div className="h-10 w-10 bg-school-blue rounded-full flex items-center justify-center">
@@ -78,13 +125,23 @@ export function AdminDashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                    <p className="text-sm font-medium text-gray-600">
+                      {stat.title}
+                    </p>
+                    <p className="text-2xl font-bold text-gray-900">
+                      {stat.value}
+                    </p>
                     <p className="text-sm text-gray-500 mt-1">
-                      <span className={stat.change.includes('+') ? 'text-green-600' : 'text-gray-600'}>
+                      <span
+                        className={
+                          stat.change.includes("+")
+                            ? "text-green-600"
+                            : "text-gray-600"
+                        }
+                      >
                         {stat.change}
                       </span>
-                      {stat.change.includes('%') && ' from last month'}
+                      {stat.change.includes("%") && " from last month"}
                     </p>
                   </div>
                   <div className={`p-3 rounded-full ${stat.bgColor}`}>
@@ -134,12 +191,19 @@ export function AdminDashboard() {
           <CardContent>
             <div className="space-y-4">
               {recentActivities.map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <div
+                  key={index}
+                  className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50"
+                >
                   <div className="h-2 w-2 bg-school-blue rounded-full mt-2 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900">{activity.action}</p>
+                    <p className="text-sm font-medium text-gray-900">
+                      {activity.action}
+                    </p>
                     <p className="text-sm text-gray-500">{activity.details}</p>
-                    <p className="text-xs text-gray-400 mt-1">{activity.time}</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {activity.time}
+                    </p>
                   </div>
                 </div>
               ))}

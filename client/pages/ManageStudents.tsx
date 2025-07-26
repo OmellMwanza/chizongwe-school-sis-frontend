@@ -2,10 +2,31 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
 import { Plus, Search, Edit, Trash2, Users } from "lucide-react";
 
@@ -32,7 +53,7 @@ export function ManageStudents() {
       dob: "2008-05-15",
       guardianContact: "+260 977 123456",
       email: "john.banda@student.chizongwe.edu.zm",
-      address: "Plot 123, Lusaka Road, Choma"
+      address: "Plot 123, Lusaka Road, Choma",
     },
     {
       id: "2",
@@ -43,7 +64,7 @@ export function ManageStudents() {
       dob: "2007-08-22",
       guardianContact: "+260 966 789012",
       email: "mary.mwanza@student.chizongwe.edu.zm",
-      address: "House 45, Maamba Road, Choma"
+      address: "House 45, Maamba Road, Choma",
     },
     {
       id: "3",
@@ -54,8 +75,8 @@ export function ManageStudents() {
       dob: "2009-12-03",
       guardianContact: "+260 955 456789",
       email: "peter.hamoonga@student.chizongwe.edu.zm",
-      address: "Plot 67, Independence Avenue, Choma"
-    }
+      address: "Plot 67, Independence Avenue, Choma",
+    },
   ]);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -70,7 +91,7 @@ export function ManageStudents() {
     dob: "",
     guardianContact: "",
     email: "",
-    address: ""
+    address: "",
   });
 
   const grades = ["Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12"];
@@ -79,13 +100,14 @@ export function ManageStudents() {
     "Grade 9": ["9A", "9B", "9C"],
     "Grade 10": ["10A", "10B", "10C"],
     "Grade 11": ["11A", "11B", "11C"],
-    "Grade 12": ["12A", "12B", "12C"]
+    "Grade 12": ["12A", "12B", "12C"],
   };
 
-  const filteredStudents = students.filter(student =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.studentNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.grade.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredStudents = students.filter(
+    (student) =>
+      student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.studentNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.grade.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const resetForm = () => {
@@ -97,7 +119,7 @@ export function ManageStudents() {
       dob: "",
       guardianContact: "",
       email: "",
-      address: ""
+      address: "",
     });
   };
 
@@ -106,14 +128,14 @@ export function ManageStudents() {
       toast({
         title: "Error",
         description: "Please fill in all required fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
     const newStudent: Student = {
       id: Date.now().toString(),
-      ...formData
+      ...formData,
     };
 
     setStudents([...students, newStudent]);
@@ -121,7 +143,7 @@ export function ManageStudents() {
     resetForm();
     toast({
       title: "Success",
-      description: "Student added successfully"
+      description: "Student added successfully",
     });
   };
 
@@ -136,29 +158,33 @@ export function ManageStudents() {
       toast({
         title: "Error",
         description: "Please fill in all required fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
-    setStudents(students.map(student =>
-      student.id === editingStudent?.id ? { ...student, ...formData } : student
-    ));
+    setStudents(
+      students.map((student) =>
+        student.id === editingStudent?.id
+          ? { ...student, ...formData }
+          : student,
+      ),
+    );
     setIsEditModalOpen(false);
     setEditingStudent(null);
     resetForm();
     toast({
       title: "Success",
-      description: "Student updated successfully"
+      description: "Student updated successfully",
     });
   };
 
   const handleDeleteStudent = (id: string) => {
     if (confirm("Are you sure you want to delete this student?")) {
-      setStudents(students.filter(student => student.id !== id));
+      setStudents(students.filter((student) => student.id !== id));
       toast({
         title: "Success",
-        description: "Student deleted successfully"
+        description: "Student deleted successfully",
       });
     }
   };
@@ -170,7 +196,7 @@ export function ManageStudents() {
         <Input
           id="name"
           value={formData.name}
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Enter full name"
         />
       </div>
@@ -179,33 +205,48 @@ export function ManageStudents() {
         <Input
           id="studentNumber"
           value={formData.studentNumber}
-          onChange={(e) => setFormData({...formData, studentNumber: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, studentNumber: e.target.value })
+          }
           placeholder="CS2024XXX"
         />
       </div>
       <div className="space-y-2">
         <Label htmlFor="grade">Grade/Form *</Label>
-        <Select value={formData.grade} onValueChange={(value) => setFormData({...formData, grade: value, class: ""})}>
+        <Select
+          value={formData.grade}
+          onValueChange={(value) =>
+            setFormData({ ...formData, grade: value, class: "" })
+          }
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select grade" />
           </SelectTrigger>
           <SelectContent>
             {grades.map((grade) => (
-              <SelectItem key={grade} value={grade}>{grade}</SelectItem>
+              <SelectItem key={grade} value={grade}>
+                {grade}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
       <div className="space-y-2">
         <Label htmlFor="class">Class</Label>
-        <Select value={formData.class} onValueChange={(value) => setFormData({...formData, class: value})}>
+        <Select
+          value={formData.class}
+          onValueChange={(value) => setFormData({ ...formData, class: value })}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select class" />
           </SelectTrigger>
           <SelectContent>
-            {formData.grade && classes[formData.grade as keyof typeof classes]?.map((cls) => (
-              <SelectItem key={cls} value={cls}>{cls}</SelectItem>
-            ))}
+            {formData.grade &&
+              classes[formData.grade as keyof typeof classes]?.map((cls) => (
+                <SelectItem key={cls} value={cls}>
+                  {cls}
+                </SelectItem>
+              ))}
           </SelectContent>
         </Select>
       </div>
@@ -215,7 +256,7 @@ export function ManageStudents() {
           id="dob"
           type="date"
           value={formData.dob}
-          onChange={(e) => setFormData({...formData, dob: e.target.value})}
+          onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
         />
       </div>
       <div className="space-y-2">
@@ -223,7 +264,9 @@ export function ManageStudents() {
         <Input
           id="guardianContact"
           value={formData.guardianContact}
-          onChange={(e) => setFormData({...formData, guardianContact: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, guardianContact: e.target.value })
+          }
           placeholder="+260 XXX XXXXXX"
         />
       </div>
@@ -233,7 +276,7 @@ export function ManageStudents() {
           id="email"
           type="email"
           value={formData.email}
-          onChange={(e) => setFormData({...formData, email: e.target.value})}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="student@chizongwe.edu.zm"
         />
       </div>
@@ -242,7 +285,9 @@ export function ManageStudents() {
         <Input
           id="address"
           value={formData.address}
-          onChange={(e) => setFormData({...formData, address: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, address: e.target.value })
+          }
           placeholder="Full address"
         />
       </div>
@@ -256,13 +301,20 @@ export function ManageStudents() {
         <div className="flex items-center gap-3">
           <Users className="h-8 w-8 text-school-blue" />
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Manage Students</h1>
-            <p className="text-gray-600">Add, edit, and manage student records</p>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Manage Students
+            </h1>
+            <p className="text-gray-600">
+              Add, edit, and manage student records
+            </p>
           </div>
         </div>
         <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-school-blue hover:bg-school-blue-dark" onClick={resetForm}>
+            <Button
+              className="bg-school-blue hover:bg-school-blue-dark"
+              onClick={resetForm}
+            >
               <Plus className="h-4 w-4 mr-2" />
               Add Student
             </Button>
@@ -271,15 +323,22 @@ export function ManageStudents() {
             <DialogHeader>
               <DialogTitle>Add New Student</DialogTitle>
               <DialogDescription>
-                Enter the student's information below. Fields marked with * are required.
+                Enter the student's information below. Fields marked with * are
+                required.
               </DialogDescription>
             </DialogHeader>
             <StudentForm />
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsAddModalOpen(false)}>
+              <Button
+                variant="outline"
+                onClick={() => setIsAddModalOpen(false)}
+              >
                 Cancel
               </Button>
-              <Button onClick={handleAddStudent} className="bg-school-blue hover:bg-school-blue-dark">
+              <Button
+                onClick={handleAddStudent}
+                className="bg-school-blue hover:bg-school-blue-dark"
+              >
                 Save Student
               </Button>
             </DialogFooter>
@@ -327,13 +386,17 @@ export function ManageStudents() {
               <TableBody>
                 {filteredStudents.map((student) => (
                   <TableRow key={student.id}>
-                    <TableCell className="font-medium">{student.name}</TableCell>
+                    <TableCell className="font-medium">
+                      {student.name}
+                    </TableCell>
                     <TableCell>{student.studentNumber}</TableCell>
                     <TableCell>{student.grade}</TableCell>
                     <TableCell>{student.class}</TableCell>
                     <TableCell>{student.dob}</TableCell>
                     <TableCell>{student.guardianContact}</TableCell>
-                    <TableCell className="max-w-[200px] truncate">{student.email}</TableCell>
+                    <TableCell className="max-w-[200px] truncate">
+                      {student.email}
+                    </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <Button
@@ -375,7 +438,10 @@ export function ManageStudents() {
             <Button variant="outline" onClick={() => setIsEditModalOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={handleUpdateStudent} className="bg-school-blue hover:bg-school-blue-dark">
+            <Button
+              onClick={handleUpdateStudent}
+              className="bg-school-blue hover:bg-school-blue-dark"
+            >
               Update Student
             </Button>
           </DialogFooter>
