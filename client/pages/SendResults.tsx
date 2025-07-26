@@ -290,7 +290,7 @@ Chizongwe Students Results System`);
                   <SelectValue placeholder="All grades" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All grades</SelectItem>
+                  <SelectItem value="all">All grades</SelectItem>
                   {grades.map((grade) => (
                     <SelectItem key={grade} value={grade}>{grade}</SelectItem>
                   ))}
