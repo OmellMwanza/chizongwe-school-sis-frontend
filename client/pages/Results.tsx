@@ -233,26 +233,17 @@ export function Results() {
               </Alert>
             )}
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                type="submit"
-                className="w-full sm:w-auto bg-school-blue hover:bg-school-blue-dark"
-                disabled={isLoading}
-              >
-                {isLoading ? "Searching..." : "Search Results"}
-                <Search className="ml-2 h-4 w-4" />
-              </Button>
+            <Button
+              type="submit"
+              className="w-full md:w-auto bg-school-blue hover:bg-school-blue-dark"
+              disabled={isLoading}
+            >
+              {isLoading ? "Searching..." : "Search Results"}
+              <Search className="ml-2 h-4 w-4" />
+            </Button>
 
-              <Link to="/admin/login">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full sm:w-auto border-school-blue text-school-blue hover:bg-school-blue hover:text-white"
-                >
-                  Admin Dashboard
-                  <Settings className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+            <div className="text-sm text-school-gray-dark mt-3">
+              If you are an admin, <Link to="/admin/login" className="text-school-blue hover:text-school-blue-dark underline">log in here</Link>.
             </div>
 
             <div className="text-sm text-school-gray-dark mt-2">
