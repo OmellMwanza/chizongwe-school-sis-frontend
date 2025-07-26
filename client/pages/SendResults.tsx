@@ -113,7 +113,7 @@ export function SendResults() {
   const filteredStudents = students.filter(student => {
     const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          student.studentNumber.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesGrade = !selectedGrade || student.grade === selectedGrade;
+    const matchesGrade = !selectedGrade || selectedGrade === "all" || student.grade === selectedGrade;
     return matchesSearch && matchesGrade;
   });
 
