@@ -22,6 +22,12 @@ import { ManageTermsYears } from "./pages/ManageTermsYears";
 import { SendResults } from "./pages/SendResults";
 import NotFound from "./pages/NotFound";
 
+declare global {
+  interface Window {
+    __app_rendered?: boolean;
+  }
+}
+
 const queryClient = new QueryClient();
 
 const App = () => (
