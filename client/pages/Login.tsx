@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast";
-import { Eye, EyeOff, GraduationCap } from "lucide-react";
+import { Eye, EyeOff, GraduationCap, ArrowLeft } from "lucide-react";
 
 export function Login() {
   const [email, setEmail] = useState("");
