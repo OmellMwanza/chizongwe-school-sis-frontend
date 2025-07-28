@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,6 +12,25 @@ import {
 } from "lucide-react";
 
 export function Home() {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const stagger = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const scaleIn = {
+    initial: { scale: 0 },
+    animate: { scale: 1 },
+    transition: { duration: 0.8, delay: 0.2 }
+  };
   return (
     <div className="space-y-0">
       {/* Hero Section */}
