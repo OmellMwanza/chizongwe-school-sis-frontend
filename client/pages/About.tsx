@@ -28,53 +28,57 @@ export function About() {
   return (
     <div className="min-h-screen bg-white">
       {/* Introduction Block */}
-      <motion.section 
-        className="relative bg-gradient-to-br from-school-blue to-school-blue-dark text-white overflow-hidden"
+      <motion.section
+        className="relative py-20 lg:py-32 bg-gradient-to-r from-school-blue to-school-blue-dark text-white overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-32 h-32 border border-white rounded-full"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 border border-white rounded-full"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="text-center">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-8"
-            >
-              <GraduationCap className="w-8 h-8" />
-            </motion.div>
-            
-            <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              About Chizongwe Secondary School
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              Committed to academic excellence and character development, Chizongwe Secondary School 
-              has been nurturing disciplined, innovative students for over three decades. We provide 
-              quality education that empowers learners with integrity, knowledge, and community responsibility.
-            </motion.p>
-          </div>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-24 h-24 border border-white rounded-full"></div>
+          <div className="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
+          <div className="absolute bottom-20 left-1/4 w-28 h-28 border border-white rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-20 h-20 border border-white rounded-full"></div>
         </div>
 
-        {/* Soft overlay for banner effect */}
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-8"
+          >
+            <GraduationCap className="w-10 h-10" />
+          </motion.div>
+
+          <motion.h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            About Chizongwe Secondary School
+          </motion.h1>
+
+          <motion.p
+            className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Committed to academic excellence and character development, Chizongwe Secondary School
+            has been nurturing disciplined, innovative students for over three decades. We provide
+            quality education that empowers learners with integrity, knowledge, and community responsibility.
+          </motion.p>
+        </div>
+
+        {/* Wave Separator */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 fill-white">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
+          </svg>
+        </div>
       </motion.section>
 
       {/* Mission, Vision, Motto Section */}
