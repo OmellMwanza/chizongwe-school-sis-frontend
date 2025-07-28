@@ -195,66 +195,105 @@ export function Home() {
       </motion.section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <motion.section
+        className="py-20 bg-white"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={stagger}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-school-blue mb-4">
+          <motion.div
+            className="text-center mb-16"
+            variants={fadeInUp}
+          >
+            <motion.h2
+              className="text-3xl lg:text-4xl font-bold text-school-blue mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               Why Choose Chizongwe School?
-            </h2>
-            <p className="text-xl text-school-gray-dark max-w-3xl mx-auto">
+            </motion.h2>
+            <motion.p
+              className="text-xl text-school-gray-dark max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               We provide quality education with modern facilities and dedicated
               teachers committed to nurturing every student's potential.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors">
-              <CardContent className="p-8 text-center">
-                <div className="bg-school-blue/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="h-8 w-8 text-school-blue" />
-                </div>
-                <h3 className="text-xl font-semibold text-school-blue mb-4">
-                  Quality Education
-                </h3>
-                <p className="text-school-gray-dark">
-                  Comprehensive curriculum designed to meet international
-                  standards and prepare students for higher education.
-                </p>
-              </CardContent>
-            </Card>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={stagger}
+          >
+            <motion.div variants={fadeInUp}>
+              <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <CardContent className="p-8 text-center">
+                  <motion.div
+                    className="bg-school-blue/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6"
+                    variants={scaleIn}
+                  >
+                    <BookOpen className="h-8 w-8 text-school-blue" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-school-blue mb-4">
+                    Quality Education
+                  </h3>
+                  <p className="text-school-gray-dark">
+                    Comprehensive curriculum designed to meet international
+                    standards and prepare students for higher education.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors">
-              <CardContent className="p-8 text-center">
-                <div className="bg-school-blue/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                  <Users className="h-8 w-8 text-school-blue" />
-                </div>
-                <h3 className="text-xl font-semibold text-school-blue mb-4">
-                  Experienced Teachers
-                </h3>
-                <p className="text-school-gray-dark">
-                  Dedicated and qualified educators committed to providing
-                  personalized attention to every student.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div variants={fadeInUp}>
+              <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <CardContent className="p-8 text-center">
+                  <motion.div
+                    className="bg-school-blue/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6"
+                    variants={scaleIn}
+                  >
+                    <Users className="h-8 w-8 text-school-blue" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-school-blue mb-4">
+                    Experienced Teachers
+                  </h3>
+                  <p className="text-school-gray-dark">
+                    Dedicated and qualified educators committed to providing
+                    personalized attention to every student.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors">
-              <CardContent className="p-8 text-center">
-                <div className="bg-school-blue/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                  <Trophy className="h-8 w-8 text-school-blue" />
-                </div>
-                <h3 className="text-xl font-semibold text-school-blue mb-4">
-                  Excellence Record
-                </h3>
-                <p className="text-school-gray-dark">
-                  Proven track record of academic excellence with outstanding
-                  results in national examinations.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+            <motion.div variants={fadeInUp}>
+              <Card className="border-2 border-school-blue/20 hover:border-school-blue/40 transition-colors h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <CardContent className="p-8 text-center">
+                  <motion.div
+                    className="bg-school-blue/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6"
+                    variants={scaleIn}
+                  >
+                    <Trophy className="h-8 w-8 text-school-blue" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-school-blue mb-4">
+                    Excellence Record
+                  </h3>
+                  <p className="text-school-gray-dark">
+                    Proven track record of academic excellence with outstanding
+                    results in national examinations.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
       <section className="py-16 bg-school-blue text-white">
