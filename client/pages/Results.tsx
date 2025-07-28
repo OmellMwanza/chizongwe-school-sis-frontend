@@ -343,19 +343,21 @@ export function Results() {
           >
             <Card>
             <CardHeader>
-              <CardTitle className="flex items-center justify-between">
+              <CardTitle className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                 <span className="flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Student Results
                 </span>
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm">
-                    <Download className="h-4 w-4 mr-2" />
-                    Download PDF
+                <div className="flex gap-2 sm:gap-3">
+                  <Button variant="outline" size="sm" className="flex-1 sm:flex-initial">
+                    <Download className="h-4 w-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Download PDF</span>
+                    <span className="sm:hidden">PDF</span>
                   </Button>
-                  <Button variant="outline" size="sm">
-                    <Mail className="h-4 w-4 mr-2" />
-                    Email Results
+                  <Button variant="outline" size="sm" className="flex-1 sm:flex-initial">
+                    <Mail className="h-4 w-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Email Results</span>
+                    <span className="sm:hidden">Email</span>
                   </Button>
                 </div>
               </CardTitle>
