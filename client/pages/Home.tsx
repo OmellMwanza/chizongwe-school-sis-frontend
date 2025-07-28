@@ -91,7 +91,7 @@ export function Home() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-2 border-white text-white hover:bg-white hover:text-school-blue font-semibold text-lg px-8 py-4 h-auto"
+                  className="border-2 border-white text-white hover:bg-black hover:text-white font-semibold text-lg px-8 py-4 h-auto"
                 >
                   <Link to="/about">Learn More</Link>
                 </Button>
