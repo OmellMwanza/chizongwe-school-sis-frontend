@@ -155,7 +155,12 @@ export function Results() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <motion.div
+      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <motion.div
         className="text-center mb-8"
         initial="initial"
@@ -321,10 +326,22 @@ export function Results() {
       </motion.div>
 
       {/* Results Display */}
-      {searchResults && (
-        <div className="space-y-6">
+      <AnimatePresence>
+        {searchResults && (
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
           {/* Student Info */}
-          <Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Card>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
@@ -437,9 +454,11 @@ export function Results() {
                 </div>
               </div>
             </CardContent>
-          </Card>
-        </div>
-      )}
-    </div>
+            </Card>
+          </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
