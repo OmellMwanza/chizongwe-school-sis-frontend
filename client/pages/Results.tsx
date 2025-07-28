@@ -181,121 +181,144 @@ export function Results() {
       </motion.div>
 
       {/* Search Form */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Search className="h-5 w-5" />
-            Student Results Search
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="year">Academic Year</Label>
-                <Select
-                  value={formData.year}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, year: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select year" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="2024">2024</SelectItem>
-                    <SelectItem value="2023">2023</SelectItem>
-                    <SelectItem value="2022">2022</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="term">Term</Label>
-                <Select
-                  value={formData.term}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, term: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select term" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="term1">Term 1</SelectItem>
-                    <SelectItem value="term2">Term 2</SelectItem>
-                    <SelectItem value="term3">Term 3</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="grade">Grade/Form</Label>
-                <Select
-                  value={formData.grade}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, grade: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select grade" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="grade8">Grade 8</SelectItem>
-                    <SelectItem value="grade9">Grade 9</SelectItem>
-                    <SelectItem value="grade10">Grade 10</SelectItem>
-                    <SelectItem value="grade11">Grade 11</SelectItem>
-                    <SelectItem value="grade12">Grade 12</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="studentNumber">Student Number</Label>
-                <Input
-                  id="studentNumber"
-                  placeholder="e.g., CS2024001"
-                  value={formData.studentNumber}
-                  onChange={(e) =>
-                    setFormData({ ...formData, studentNumber: e.target.value })
-                  }
-                />
-              </div>
-            </div>
-
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
-
-            <Button
-              type="submit"
-              className="w-full md:w-auto bg-school-blue hover:bg-school-blue-dark"
-              disabled={isLoading}
-            >
-              {isLoading ? "Searching..." : "Search Results"}
-              <Search className="ml-2 h-4 w-4" />
-            </Button>
-
-            <div className="text-sm text-school-gray-dark mt-3">
-              If you are an admin,{" "}
-              <Link
-                to="/admin/login"
-                className="text-school-blue hover:text-school-blue-dark underline"
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Search className="h-5 w-5" />
+              Student Results Search
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+                variants={stagger}
+                initial="initial"
+                animate="animate"
               >
-                log in here
-              </Link>
-              .
-            </div>
+                <motion.div className="space-y-2" variants={fadeInUp}>
+                  <Label htmlFor="year">Academic Year</Label>
+                  <Select
+                    value={formData.year}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, year: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select year" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="2024">2024</SelectItem>
+                      <SelectItem value="2023">2023</SelectItem>
+                      <SelectItem value="2022">2022</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </motion.div>
 
-            <div className="text-sm text-school-gray-dark mt-2">
-              <strong>Demo:</strong> Use student number "CS2024001" to see
-              sample results
-            </div>
-          </form>
-        </CardContent>
-      </Card>
+                <motion.div className="space-y-2" variants={fadeInUp}>
+                  <Label htmlFor="term">Term</Label>
+                  <Select
+                    value={formData.term}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, term: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select term" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="term1">Term 1</SelectItem>
+                      <SelectItem value="term2">Term 2</SelectItem>
+                      <SelectItem value="term3">Term 3</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </motion.div>
+
+                <motion.div className="space-y-2" variants={fadeInUp}>
+                  <Label htmlFor="grade">Grade/Form</Label>
+                  <Select
+                    value={formData.grade}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, grade: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select grade" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="grade8">Grade 8</SelectItem>
+                      <SelectItem value="grade9">Grade 9</SelectItem>
+                      <SelectItem value="grade10">Grade 10</SelectItem>
+                      <SelectItem value="grade11">Grade 11</SelectItem>
+                      <SelectItem value="grade12">Grade 12</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </motion.div>
+
+                <motion.div className="space-y-2" variants={fadeInUp}>
+                  <Label htmlFor="studentNumber">Student Number</Label>
+                  <Input
+                    id="studentNumber"
+                    placeholder="e.g., CS2024001"
+                    value={formData.studentNumber}
+                    onChange={(e) =>
+                      setFormData({ ...formData, studentNumber: e.target.value })
+                    }
+                  />
+                </motion.div>
+              </motion.div>
+
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Alert variant="destructive">
+                    <AlertDescription>{error}</AlertDescription>
+                  </Alert>
+                </motion.div>
+              )}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <Button
+                  type="submit"
+                  className="w-full md:w-auto bg-school-blue hover:bg-school-blue-dark hover:scale-105 transition-transform duration-300"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Searching..." : "Search Results"}
+                  <Search className="ml-2 h-4 w-4" />
+                </Button>
+
+                <div className="text-sm text-school-gray-dark mt-3">
+                  If you are an admin,{" "}
+                  <Link
+                    to="/admin/login"
+                    className="text-school-blue hover:text-school-blue-dark underline"
+                  >
+                    log in here
+                  </Link>
+                  .
+                </div>
+
+                <div className="text-sm text-school-gray-dark mt-2">
+                  <strong>Demo:</strong> Use student number "CS2024001" to see
+                  sample results
+                </div>
+              </motion.div>
+            </form>
+          </CardContent>
+        </Card>
+      </motion.div>
 
       {/* Results Display */}
       {searchResults && (
