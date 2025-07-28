@@ -34,24 +34,49 @@ export function Home() {
   return (
     <div className="space-y-0">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-school-blue to-school-blue-dark text-white">
+      <motion.section
+        className="relative bg-gradient-to-br from-school-blue to-school-blue-dark text-white"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              <motion.h1
+                className="text-4xl lg:text-6xl font-bold mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 Welcome to{" "}
                 <span className="block text-yellow-300">Chizongwe School</span>
-              </h1>
-              <p className="text-xl lg:text-2xl mb-8 text-blue-100">
+              </motion.h1>
+              <motion.p
+                className="text-xl lg:text-2xl mb-8 text-blue-100"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 Excellence in Education - Shaping Tomorrow's Leaders
-              </p>
-              <p className="text-lg mb-8 text-blue-200 max-w-2xl">
+              </motion.p>
+              <motion.p
+                className="text-lg mb-8 text-blue-200 max-w-2xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
                 Access your academic results quickly and securely. Our digital
                 results system provides instant access to grades, progress
                 reports, and academic achievements.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              </motion.p>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
                 <Button
                   asChild
                   size="lg"
@@ -70,13 +95,24 @@ export function Home() {
                 >
                   <Link to="/about">Learn More</Link>
                 </Button>
-              </div>
+              </motion.div>
             </div>
-            <div className="relative">
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="aspect-video bg-gradient-to-br from-white/20 to-white/5 rounded-xl flex items-center justify-center">
                   <div className="text-center">
-                    <GraduationCap className="h-20 w-20 text-yellow-300 mx-auto mb-4" />
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.8, delay: 0.6 }}
+                    >
+                      <GraduationCap className="h-20 w-20 text-yellow-300 mx-auto mb-4" />
+                    </motion.div>
                     <p className="text-white/80 text-lg">
                       School Building Image
                     </p>
@@ -84,10 +120,10 @@ export function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
       <section className="py-16 bg-school-gray">
