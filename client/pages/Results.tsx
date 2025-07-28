@@ -60,21 +60,21 @@ export function Results() {
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   const stagger = {
     animate: {
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const scaleIn = {
     initial: { scale: 0 },
     animate: { scale: 1 },
-    transition: { duration: 0.8, delay: 0.2 }
+    transition: { duration: 0.8, delay: 0.2 },
   };
 
   // Sample data for demonstration
@@ -272,7 +272,10 @@ export function Results() {
                     placeholder="e.g., CS2024001"
                     value={formData.studentNumber}
                     onChange={(e) =>
-                      setFormData({ ...formData, studentNumber: e.target.value })
+                      setFormData({
+                        ...formData,
+                        studentNumber: e.target.value,
+                      })
                     }
                   />
                 </motion.div>
@@ -335,129 +338,149 @@ export function Results() {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-          {/* Student Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Card>
-            <CardHeader>
-              <CardTitle className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
-                <span className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
-                  Student Results
-                </span>
-                <div className="flex gap-2 sm:gap-3">
-                  <Button variant="outline" size="sm" className="flex-1 sm:flex-initial">
-                    <Download className="h-4 w-4 sm:mr-2" />
-                    <span className="hidden sm:inline">Download PDF</span>
-                    <span className="sm:hidden">PDF</span>
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex-1 sm:flex-initial">
-                    <Mail className="h-4 w-4 sm:mr-2" />
-                    <span className="hidden sm:inline">Email Results</span>
-                    <span className="sm:hidden">Email</span>
-                  </Button>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div>
-                  <p className="text-sm text-school-gray-dark">Student Name</p>
-                  <p className="font-semibold">{searchResults.studentName}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-school-gray-dark">
-                    Student Number
-                  </p>
-                  <p className="font-semibold">{searchResults.studentNumber}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-school-gray-dark">Class</p>
-                  <p className="font-semibold">{searchResults.class}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-school-gray-dark">
-                    Academic Period
-                  </p>
-                  <p className="font-semibold">
-                    {searchResults.year} - {searchResults.term}
-                  </p>
-                </div>
-              </div>
+            {/* Student Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                    <span className="flex items-center gap-2">
+                      <FileText className="h-5 w-5" />
+                      Student Results
+                    </span>
+                    <div className="flex gap-2 sm:gap-3">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 sm:flex-initial"
+                      >
+                        <Download className="h-4 w-4 sm:mr-2" />
+                        <span className="hidden sm:inline">Download PDF</span>
+                        <span className="sm:hidden">PDF</span>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 sm:flex-initial"
+                      >
+                        <Mail className="h-4 w-4 sm:mr-2" />
+                        <span className="hidden sm:inline">Email Results</span>
+                        <span className="sm:hidden">Email</span>
+                      </Button>
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div>
+                      <p className="text-sm text-school-gray-dark">
+                        Student Name
+                      </p>
+                      <p className="font-semibold">
+                        {searchResults.studentName}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-school-gray-dark">
+                        Student Number
+                      </p>
+                      <p className="font-semibold">
+                        {searchResults.studentNumber}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-school-gray-dark">Class</p>
+                      <p className="font-semibold">{searchResults.class}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-school-gray-dark">
+                        Academic Period
+                      </p>
+                      <p className="font-semibold">
+                        {searchResults.year} - {searchResults.term}
+                      </p>
+                    </div>
+                  </div>
 
-              {/* Results Table */}
-              <div className="border rounded-lg overflow-hidden">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Subject</TableHead>
-                      <TableHead className="text-center">Marks</TableHead>
-                      <TableHead className="text-center">Grade</TableHead>
-                      <TableHead className="text-center">Position</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {searchResults.results.map((result, index) => (
-                      <TableRow key={index}>
-                        <TableCell className="font-medium">
-                          {result.subject}
-                        </TableCell>
-                        <TableCell className="text-center">
-                          {result.marks}/100
-                        </TableCell>
-                        <TableCell className="text-center">
-                          <span
-                            className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(result.grade)}`}
-                          >
-                            {result.grade}
-                          </span>
-                        </TableCell>
-                        <TableCell className="text-center">
-                          {result.position}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
+                  {/* Results Table */}
+                  <div className="border rounded-lg overflow-hidden">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Subject</TableHead>
+                          <TableHead className="text-center">Marks</TableHead>
+                          <TableHead className="text-center">Grade</TableHead>
+                          <TableHead className="text-center">
+                            Position
+                          </TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {searchResults.results.map((result, index) => (
+                          <TableRow key={index}>
+                            <TableCell className="font-medium">
+                              {result.subject}
+                            </TableCell>
+                            <TableCell className="text-center">
+                              {result.marks}/100
+                            </TableCell>
+                            <TableCell className="text-center">
+                              <span
+                                className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(result.grade)}`}
+                              >
+                                {result.grade}
+                              </span>
+                            </TableCell>
+                            <TableCell className="text-center">
+                              {result.position}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
 
-              {/* Summary */}
-              <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-school-gray rounded-lg">
-                <div className="text-center">
-                  <p className="text-sm text-school-gray-dark">Total Marks</p>
-                  <p className="text-2xl font-bold text-school-blue">
-                    {searchResults.totalMarks}/600
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm text-school-gray-dark">Average</p>
-                  <p className="text-2xl font-bold text-school-blue">
-                    {searchResults.average}%
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm text-school-gray-dark">Overall Grade</p>
-                  <p
-                    className={`text-2xl font-bold px-3 py-1 rounded-full ${getGradeColor(searchResults.overallGrade)}`}
-                  >
-                    {searchResults.overallGrade}
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm text-school-gray-dark">
-                    Class Position
-                  </p>
-                  <p className="text-2xl font-bold text-school-blue">
-                    {searchResults.position}/{searchResults.totalStudents}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-            </Card>
-          </motion.div>
+                  {/* Summary */}
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-school-gray rounded-lg">
+                    <div className="text-center">
+                      <p className="text-sm text-school-gray-dark">
+                        Total Marks
+                      </p>
+                      <p className="text-2xl font-bold text-school-blue">
+                        {searchResults.totalMarks}/600
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-school-gray-dark">Average</p>
+                      <p className="text-2xl font-bold text-school-blue">
+                        {searchResults.average}%
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-school-gray-dark">
+                        Overall Grade
+                      </p>
+                      <p
+                        className={`text-2xl font-bold px-3 py-1 rounded-full ${getGradeColor(searchResults.overallGrade)}`}
+                      >
+                        {searchResults.overallGrade}
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-school-gray-dark">
+                        Class Position
+                      </p>
+                      <p className="text-2xl font-bold text-school-blue">
+                        {searchResults.position}/{searchResults.totalStudents}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

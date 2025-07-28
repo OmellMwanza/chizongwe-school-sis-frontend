@@ -15,21 +15,21 @@ export function Home() {
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   const stagger = {
     animate: {
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const scaleIn = {
     initial: { scale: 0 },
     animate: { scale: 1 },
-    transition: { duration: 0.8, delay: 0.2 }
+    transition: { duration: 0.8, delay: 0.2 },
   };
   return (
     <div className="space-y-0">
@@ -137,10 +137,7 @@ export function Home() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-8"
             variants={stagger}
           >
-            <motion.div
-              className="text-center"
-              variants={fadeInUp}
-            >
+            <motion.div className="text-center" variants={fadeInUp}>
               <motion.div
                 className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
                 variants={scaleIn}
@@ -150,10 +147,7 @@ export function Home() {
               <h3 className="text-3xl font-bold text-school-blue">1,200+</h3>
               <p className="text-school-gray-dark">Students</p>
             </motion.div>
-            <motion.div
-              className="text-center"
-              variants={fadeInUp}
-            >
+            <motion.div className="text-center" variants={fadeInUp}>
               <motion.div
                 className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
                 variants={scaleIn}
@@ -163,10 +157,7 @@ export function Home() {
               <h3 className="text-3xl font-bold text-school-blue">50+</h3>
               <p className="text-school-gray-dark">Teachers</p>
             </motion.div>
-            <motion.div
-              className="text-center"
-              variants={fadeInUp}
-            >
+            <motion.div className="text-center" variants={fadeInUp}>
               <motion.div
                 className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
                 variants={scaleIn}
@@ -176,10 +167,7 @@ export function Home() {
               <h3 className="text-3xl font-bold text-school-blue">15</h3>
               <p className="text-school-gray-dark">Years Excellence</p>
             </motion.div>
-            <motion.div
-              className="text-center"
-              variants={fadeInUp}
-            >
+            <motion.div className="text-center" variants={fadeInUp}>
               <motion.div
                 className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
                 variants={scaleIn}
@@ -202,10 +190,7 @@ export function Home() {
         variants={stagger}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            variants={fadeInUp}
-          >
+          <motion.div className="text-center mb-16" variants={fadeInUp}>
             <motion.h2
               className="text-3xl lg:text-4xl font-bold text-school-blue mb-4"
               initial={{ opacity: 0, y: 30 }}
