@@ -126,40 +126,73 @@ export function Home() {
       </motion.section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-school-gray">
+      <motion.section
+        className="py-16 bg-school-gray"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={stagger}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={stagger}
+          >
+            <motion.div
+              className="text-center"
+              variants={fadeInUp}
+            >
+              <motion.div
+                className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                variants={scaleIn}
+              >
                 <Users className="h-8 w-8" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-school-blue">1,200+</h3>
               <p className="text-school-gray-dark">Students</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div
+              className="text-center"
+              variants={fadeInUp}
+            >
+              <motion.div
+                className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                variants={scaleIn}
+              >
                 <BookOpen className="h-8 w-8" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-school-blue">50+</h3>
               <p className="text-school-gray-dark">Teachers</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div
+              className="text-center"
+              variants={fadeInUp}
+            >
+              <motion.div
+                className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                variants={scaleIn}
+              >
                 <Award className="h-8 w-8" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-school-blue">15</h3>
               <p className="text-school-gray-dark">Years Excellence</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div
+              className="text-center"
+              variants={fadeInUp}
+            >
+              <motion.div
+                className="bg-school-blue text-white rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                variants={scaleIn}
+              >
                 <Trophy className="h-8 w-8" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-school-blue">98%</h3>
               <p className="text-school-gray-dark">Pass Rate</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Features Section */}
       <section className="py-20 bg-white">
