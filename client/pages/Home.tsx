@@ -296,27 +296,52 @@ export function Home() {
       </motion.section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-school-blue text-white">
+      <motion.section
+        className="py-16 bg-school-blue text-white"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={stagger}
+      >
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+          <motion.h2
+            className="text-3xl lg:text-4xl font-bold mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             Ready to Check Your Results?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          </motion.h2>
+          <motion.p
+            className="text-xl text-blue-100 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             Access your academic progress instantly through our secure results
             portal.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold text-lg px-8 py-4 h-auto"
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
           >
-            <Link to="/results">
-              Access Results Portal
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+            <Button
+              asChild
+              size="lg"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold text-lg px-8 py-4 h-auto hover:scale-105 transition-transform duration-300"
+            >
+              <Link to="/results">
+                Access Results Portal
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
