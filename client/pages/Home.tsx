@@ -89,9 +89,8 @@ export function Home() {
                 </Button>
                 <Button
                   asChild
-                  variant="outline"
                   size="lg"
-                  className="border-2 border-white text-white hover:bg-black hover:text-white font-semibold text-lg px-8 py-4 h-auto"
+                  className="bg-school-blue-light hover:bg-school-blue-dark text-white font-semibold text-lg px-8 py-4 h-auto"
                 >
                   <Link to="/about">Learn More</Link>
                 </Button>
