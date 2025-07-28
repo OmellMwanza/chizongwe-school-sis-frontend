@@ -156,14 +156,29 @@ export function Results() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl lg:text-4xl font-bold text-school-blue mb-4">
+      <motion.div
+        className="text-center mb-8"
+        initial="initial"
+        animate="animate"
+        variants={stagger}
+      >
+        <motion.h1
+          className="text-3xl lg:text-4xl font-bold text-school-blue mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           Check Your Results
-        </h1>
-        <p className="text-lg text-school-gray-dark">
+        </motion.h1>
+        <motion.p
+          className="text-lg text-school-gray-dark"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           Enter your details below to access your academic results
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       {/* Search Form */}
       <Card className="mb-8">
